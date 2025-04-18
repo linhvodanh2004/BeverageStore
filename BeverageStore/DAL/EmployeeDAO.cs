@@ -64,7 +64,7 @@ namespace BeverageStore.Repository
             return _context.Employees
                 .Include(e => e.Role)
                 .FirstOrDefault(e => e.Email == email);
-        }   
+        }
         public Employee GetEmployeeByUsername(String username)
         {
             return _context.Employees
@@ -91,13 +91,9 @@ namespace BeverageStore.Repository
 
         public bool UpdateEmployee(Employee employee)
         {
-            if (GetEmployeeById(employee.Id) != null)
-            {
-                _context.Employees.Update(employee);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            _context.Employees.Update(employee);
+            _context.SaveChanges();
+            return true;
         }
     }
 }

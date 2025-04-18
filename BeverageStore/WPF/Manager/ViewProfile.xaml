@@ -16,6 +16,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
 
         <!-- Sidebar Navigation -->
@@ -23,7 +25,9 @@
 
         <!-- Main Content Area -->
         <StackPanel Grid.Row="1" Margin="20">
-
+            <TextBlock Text="Information" HorizontalAlignment="Center" 
+                   Margin="0 25 0 0" FontWeight="Bold" FontSize="30">
+            </TextBlock>
             <!-- Username & Fullname -->
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -31,22 +35,25 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Column="0" x:Name="Username"
+                <TextBox Grid.Column="0" x:Name="Username" IsReadOnly="True"
                          materialDesign:HintAssist.Hint="Username"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          materialDesign:TextFieldAssist.UnderlineBrush="Black"
                          materialDesign:HintAssist.FloatingScale="0.8"
-                         materialDesign:HintAssist.Foreground="Black"
+                         materialDesign:HintAssist.Foreground="Gray"
+                         Background="#F5F5F5"
                          FontSize="13"
+                         Opacity="0.9"
+                         IsEnabled="True"
+                         materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
                          VerticalAlignment="Center"
                          Margin="5"/>
-
                 <TextBox Grid.Column="1" x:Name="Fullname"
                          materialDesign:HintAssist.Hint="Fullname"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          materialDesign:TextFieldAssist.UnderlineBrush="Black"
                          materialDesign:HintAssist.FloatingScale="0.8"
-                         materialDesign:HintAssist.Foreground="Black"
+                         materialDesign:HintAssist.Foreground="WhiteSmoke"
                          FontSize="13"
                          VerticalAlignment="Center"
                          Margin="5"/>
@@ -90,7 +97,7 @@
                 <DatePicker Grid.Column="0" x:Name="Dob"
                             materialDesign:HintAssist.Hint="Date of birth"
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                            Margin="5"/>
+                            Margin="5" />
 
                 <Grid Grid.Column="1" Margin="5">
                     <Grid.ColumnDefinitions>
@@ -120,40 +127,65 @@
                 </Grid>
             </Grid>
 
-            <!-- Password -->
-            <PasswordBox x:Name="Password"
-                         materialDesign:HintAssist.Hint="Password"
-                         materialDesign:HintAssist.Foreground="Black"
-                         materialDesign:HintAssist.FloatingScale="0.8"
-                         FontSize="13"
-                         materialDesign:TextFieldAssist.UnderlineBrush="Black"
-                         Margin="5"
-                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-
-            <!-- Confirm Password -->
-            <PasswordBox x:Name="ConfirmPassword"
-                         materialDesign:HintAssist.Hint="Confirm password"
-                         materialDesign:HintAssist.Foreground="Black"
-                         materialDesign:HintAssist.FloatingScale="0.8"
-                         FontSize="13"
-                         materialDesign:TextFieldAssist.UnderlineBrush="Black"
-                         Margin="5"
-                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-
-            <!-- Register Button -->
+            
+            <!-- Save Button -->
             <Grid Width="300" Margin="0 20 0 20">
                 <Button Height="40" Width="300"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         materialDesign:ButtonAssist.CornerRadius="25"
-                        Background="Black"
+                        Background="Black" Click="SaveChange"
                         ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <TextBlock Text="Register  "/>
-                        <materialDesign:PackIcon Kind="AccountArrowRightOutline"
+                        <TextBlock Text="Save  "/>
+                        <materialDesign:PackIcon Kind="Check"
                                                  Width="24" Height="20"/>
                     </StackPanel>
                 </Button>
             </Grid>
         </StackPanel>
+
+        <!-- Password -->
+        <Border BorderBrush="Gray" BorderThickness="1" Grid.Row="2" CornerRadius="5" Margin="5">
+            <StackPanel Orientation="Vertical">
+                <PasswordBox x:Name="OldPassword"
+                        materialDesign:HintAssist.Hint="Old Password"
+                        materialDesign:HintAssist.Foreground="Black"
+                        materialDesign:HintAssist.FloatingScale="0.8"
+                        FontSize="13" Margin="5"
+                        materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+
+                <PasswordBox x:Name="NewPassword"
+                materialDesign:HintAssist.Hint="New Password"
+                materialDesign:HintAssist.Foreground="Black"
+                materialDesign:HintAssist.FloatingScale="0.8"
+                FontSize="13" Margin="5"
+                materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+
+                <!-- Confirm Password -->
+                <PasswordBox x:Name="ConfirmPassword"
+                materialDesign:HintAssist.Hint="Confirm password"
+                materialDesign:HintAssist.Foreground="Black"
+                materialDesign:HintAssist.FloatingScale="0.8"
+                FontSize="13" Margin="5"
+                materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <Grid Width="300" Margin="0 20 0 20">
+                    <Button Height="40" Width="200" 
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    Background="DarkGreen" Click="ChangePassword"
+                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="Change password  "/>
+                            <materialDesign:PackIcon Kind="Check"
+                         Width="24" Height="20"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Border>
+
     </Grid>
 </Window>

@@ -27,9 +27,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="WPF\Barista\" />
-    <Folder Include="WPF\Waiter\" />
-  </ItemGroup>
-
 </Project>
